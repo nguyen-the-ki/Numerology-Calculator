@@ -1,225 +1,238 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mật mã thành công</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="min-h-screen bg-gray-50 p-4" style="font-family: ui-sans-serif,system-ui,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\";">
-    <div class="max-w-5xl mx-auto">
-      <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">Mật mã thành công</h1>
 
-      <form id="form" class="bg-white p-6 rounded shadow-md max-w-md mx-auto">
-        <div class="flex flex-col gap-4">
-          <label class="w-full">
-            <div class="text-sm font-medium text-gray-700 flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              Họ và tên
-            </div>
-            <input id="fullname" type="text" placeholder="Nguyễn Lê Quốc Anh" class="mt-2 w-full border-2 border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-gray-400" style="height: 44px; -webkit-appearance: none; appearance: none;" />
-          </label>
-          <label class="w-full">
-            <div class="text-sm font-medium text-gray-700 flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M8 2v4"></path>
-                <path d="M16 2v4"></path>
-                <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                <path d="M3 10h18"></path>
-              </svg>
-              Ngày sinh
-            </div>
-            <input id="birth" type="date" class="mt-2 w-full border-2 border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-gray-400 text-base" style="height: 44px; background-color: white; -webkit-appearance: none; appearance: none;"  />
-          </label>
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mật mã thành công</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-        <div class="mt-6 flex gap-3 justify-center">
-          <button id="calc" type="button" class="px-6 py-2 bg-gray-700 text-white font-medium rounded hover:bg-gray-800 transition">Tính</button>
-          <button id="reset" type="button" class="px-6 py-2 border-2 border-gray-400 text-gray-700 font-medium rounded hover:bg-gray-100 transition">Xóa</button>
-        </div>
-      </form>
+<body class="min-h-screen bg-gray-50 p-4"
+  style="font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">Mật mã thành công</h1>
 
-      <div id="results" class="mt-8 flex flex-col items-center w-full"><div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto"></div></div>
+    <form id="form" class="bg-white p-6 rounded shadow-md max-w-md mx-auto">
+      <div class="flex flex-col gap-4">
+        <label class="w-full">
+          <div class="text-sm font-medium text-gray-700 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            Họ và tên
+          </div>
+          <input id="fullname" type="text" placeholder="Nguyễn Lê Quốc Anh"
+            class="mt-2 w-full border-2 border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-gray-400"
+            style="height: 44px; -webkit-appearance: none; appearance: none;" />
+        </label>
+        <label class="w-full">
+          <div class="text-sm font-medium text-gray-700 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8 2v4"></path>
+              <path d="M16 2v4"></path>
+              <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+              <path d="M3 10h18"></path>
+            </svg>
+            Ngày sinh
+          </div>
+          <input id="birth" type="date"
+            class="mt-2 w-full border-2 border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-gray-400 text-base"
+            style="height: 44px; background-color: white; -webkit-appearance: none; appearance: none;" />
+        </label>
+      </div>
+
+      <div class="mt-6 flex gap-3 justify-center">
+        <button id="calc" type="button"
+          class="px-6 py-2 bg-gray-700 text-white font-medium rounded hover:bg-gray-800 transition">Tính</button>
+        <button id="reset" type="button"
+          class="px-6 py-2 border-2 border-gray-400 text-gray-700 font-medium rounded hover:bg-gray-100 transition">Xóa</button>
+      </div>
+    </form>
+
+    <div id="results" class="mt-8 flex flex-col items-center w-full">
+      <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto"></div>
     </div>
+  </div>
 
-    <script>
+  <script>
     const letterMap = {
-      A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:8,I:9,
-      J:1,K:2,L:3,M:4,N:5,O:6,P:7,Q:8,R:9,
-      S:1,T:2,U:3,V:4,W:5,X:6,Y:7,Z:8
+      A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8, I: 9,
+      J: 1, K: 2, L: 3, M: 4, N: 5, O: 6, P: 7, Q: 8, R: 9,
+      S: 1, T: 2, U: 3, V: 4, W: 5, X: 6, Y: 7, Z: 8
     };
 
-    function stripDiacritics(str){
-      try{ return str.normalize('NFD').replace(/\p{Diacritic}/gu,'').replace(/đ/g,'d').replace(/Đ/g,'D'); }
-      catch(e){ return str.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D'); }
+    function stripDiacritics(str) {
+      try { return str.normalize('NFD').replace(/\p{Diacritic}/gu, '').replace(/đ/g, 'd').replace(/Đ/g, 'D'); }
+      catch (e) { return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D'); }
     }
 
-    function isLetter(ch){ return /[A-Z]/.test(ch); }
+    function isLetter(ch) { return /[A-Z]/.test(ch); }
 
-    function isVowel(ch, left, right){
-      const V = ['A','E','I','O','U'];
+    function isVowel(ch, left, right) {
+      const V = ['A', 'E', 'I', 'O', 'U'];
       if (V.includes(ch)) return true;
-      if (ch === 'Y'){
+      if (ch === 'Y') {
         if ((left && V.includes(left)) || (right && V.includes(right))) return false;
         return true;
       }
       return false;
     }
 
-    function letterToNumber(ch){ ch = ch.toUpperCase(); return letterMap[ch] || 0; }
-    function sumDigits(n){ return String(n).split('').reduce((s,c)=>s+Number(c),0); }
-    function reduceNumber(n, allowMaster=true){ while(n>=10 && !(allowMaster && (n===11||n===22||n===33))){ n=sumDigits(n); } return n; }
-    function reduceToSingle(n){ while(n>=10){ n=sumDigits(n); } return n; }
+    function letterToNumber(ch) { ch = ch.toUpperCase(); return letterMap[ch] || 0; }
+    function sumDigits(n) { return String(n).split('').reduce((s, c) => s + Number(c), 0); }
+    function reduceNumber(n, allowMaster = true) { while (n >= 10 && !(allowMaster && (n === 11 || n === 22 || n === 33))) { n = sumDigits(n); } return n; }
+    function reduceToSingle(n) { while (n >= 10) { n = sumDigits(n); } return n; }
 
-    function analyzeName(fullname){
-      const raw = stripDiacritics(fullname||'').trim().replace(/\s+/g,' ');
+    function analyzeName(fullname) {
+      const raw = stripDiacritics(fullname || '').trim().replace(/\s+/g, ' ');
       if (!raw) return null;
       const parts = raw.split(' ');
-      const syllables = parts.map(part=>{
+      const syllables = parts.map(part => {
         const chars = part.toUpperCase().split('');
         const letters = [];
-        for (let i=0;i<chars.length;i++){
+        for (let i = 0; i < chars.length; i++) {
           const ch = chars[i]; if (!isLetter(ch)) continue;
-          const left = i>0?chars[i-1]:null; const right = i<chars.length-1?chars[i+1]:null;
-          const vowel = isVowel(ch,left,right); const num = letterToNumber(ch);
-          letters.push({ch,num,vowel});
+          const left = i > 0 ? chars[i - 1] : null; const right = i < chars.length - 1 ? chars[i + 1] : null;
+          const vowel = isVowel(ch, left, right); const num = letterToNumber(ch);
+          letters.push({ ch, num, vowel });
         }
-        const total = letters.reduce((s,x)=>s+x.num,0);
-        const vowelTotal = letters.filter(x=>x.vowel).reduce((s,x)=>s+x.num,0);
-        const consonantTotal = letters.filter(x=>!x.vowel).reduce((s,x)=>s+x.num,0);
-        return {part,letters,total,vowelTotal,consonantTotal,mappedDigits:letters.map(x=>x.num)};
+        const total = letters.reduce((s, x) => s + x.num, 0);
+        const vowelTotal = letters.filter(x => x.vowel).reduce((s, x) => s + x.num, 0);
+        const consonantTotal = letters.filter(x => !x.vowel).reduce((s, x) => s + x.num, 0);
+        return { part, letters, total, vowelTotal, consonantTotal, mappedDigits: letters.map(x => x.num) };
       });
-      const allDigits = [].concat(...syllables.map(s=>s.mappedDigits));
-      return {raw,parts,syllables,allDigits};
+      const allDigits = [].concat(...syllables.map(s => s.mappedDigits));
+      return { raw, parts, syllables, allDigits };
     }
 
-    function computeAll(nameData, birthDate){
+    function computeAll(nameData, birthDate) {
       const out = {};
       const sylls = nameData.syllables;
-      const syllTotals = sylls.map(s=>s.total);
-      const syllReduced = syllTotals.map(t=>reduceNumber(t,true));
-      const missionRawSum = syllReduced.reduce((a,b)=>a+b,0);
-      const missionValue = reduceNumber(missionRawSum,true);
-      out.mission = {value: missionValue, goc: formatGoc(missionRawSum, syllReduced, missionValue)};
+      const syllTotals = sylls.map(s => s.total);
+      const syllReduced = syllTotals.map(t => reduceNumber(t, true));
+      const missionRawSum = syllReduced.reduce((a, b) => a + b, 0);
+      const missionValue = reduceNumber(missionRawSum, true);
+      out.mission = { value: missionValue, goc: formatGoc(missionRawSum, syllReduced, missionValue) };
 
-      const vowelSums = sylls.map(s=>s.vowelTotal);
-      const vowelReduced = vowelSums.map(t=>reduceNumber(t,true));
-      const soulRawSum = vowelReduced.reduce((a,b)=>a+b,0);
-      const soulValue = reduceNumber(soulRawSum,true);
-      out.soul = {value: soulValue, goc: formatGoc(soulRawSum, vowelReduced, soulValue)};
+      const vowelSums = sylls.map(s => s.vowelTotal);
+      const vowelReduced = vowelSums.map(t => reduceNumber(t, true));
+      const soulRawSum = vowelReduced.reduce((a, b) => a + b, 0);
+      const soulValue = reduceNumber(soulRawSum, true);
+      out.soul = { value: soulValue, goc: formatGoc(soulRawSum, vowelReduced, soulValue) };
 
       const present = new Set(nameData.allDigits);
-      const missing = []; for (let i=1;i<=9;i++){ if (!present.has(i)) missing.push(i); }
-      out.missing = {value: missing, goc: nameData.allDigits.slice() };
+      const missing = []; for (let i = 1; i <= 9; i++) { if (!present.has(i)) missing.push(i); }
+      out.missing = { value: missing, goc: nameData.allDigits.slice() };
 
-      const freq = {}; nameData.allDigits.forEach(d=>{ freq[d]=(freq[d]||0)+1; });
-      let passion=[], maxf=0; for (let d=1;d<=9;d++){ if (freq[d]){ if (freq[d]>maxf){ maxf=freq[d]; passion=[d]; } else if (freq[d]===maxf){ passion.push(d); } } }
-      out.passion = {value: passion, goc: freq};
+      const freq = {}; nameData.allDigits.forEach(d => { freq[d] = (freq[d] || 0) + 1; });
+      let passion = [], maxf = 0; for (let d = 1; d <= 9; d++) { if (freq[d]) { if (freq[d] > maxf) { maxf = freq[d]; passion = [d]; } else if (freq[d] === maxf) { passion.push(d); } } }
+      out.passion = { value: passion, goc: freq };
 
-      const initials = nameData.parts.map(p=>letterToNumber(p[0]));
-      out.balance = {value: reduceToSingle(reduceNumber(initials.reduce((a,b)=>a+b,0),true)), goc: initials.join(' + ')};
+      const initials = nameData.parts.map(p => letterToNumber(p[0]));
+      out.balance = { value: reduceNumber(initials.reduce((a, b) => a + b, 0), true), goc: initials.join(' + ') };
 
-      const consSums = sylls.map(s=>s.consonantTotal);
-      const consReduced = consSums.map(t=>reduceNumber(t,true));
-      const personalityRawSum = consReduced.reduce((a,b)=>a+b,0);
-      const personalityValue = reduceNumber(personalityRawSum,true);
-      out.personality = {value: personalityValue, goc: formatGoc(personalityRawSum, consReduced, personalityValue)};
+      const consSums = sylls.map(s => s.consonantTotal);
+      const consReduced = consSums.map(t => reduceNumber(t, true));
+      const personalityRawSum = consReduced.reduce((a, b) => a + b, 0);
+      const personalityValue = reduceNumber(personalityRawSum, true);
+      out.personality = { value: personalityValue, goc: formatGoc(personalityRawSum, consReduced, personalityValue) };
 
-      function detectMain(parts, raw){ const hasDiacritic = /[^\u0000-\u007f]/.test(raw); if (hasDiacritic) return parts[parts.length-1]; if (parts.length===2) return parts[0]; return parts[parts.length-1]; }
-      const mainName = detectMain(nameData.parts,nameData.raw);
-      const mainSyll = sylls.find(s=>s.part.toUpperCase()===mainName.toUpperCase()) || sylls[sylls.length-1];
+      function detectMain(parts, raw) { const hasDiacritic = /[^\u0000-\u007f]/.test(raw); if (hasDiacritic) return parts[parts.length - 1]; if (parts.length === 2) return parts[0]; return parts[parts.length - 1]; }
+      const mainName = detectMain(nameData.parts, nameData.raw);
+      const mainSyll = sylls.find(s => s.part.toUpperCase() === mainName.toUpperCase()) || sylls[sylls.length - 1];
 
-      const dayNum = birthDate?birthDate.getDate():0;
-      out.thinking = {value: reduceToSingle(reduceNumber(mainSyll.total + dayNum,true)), goc: mainSyll.total + ' + ' + dayNum };
+      const dayNum = birthDate ? birthDate.getDate() : 0;
+      out.thinking = { value: reduceNumber(mainSyll.total + dayNum, true), goc: mainSyll.total + ' + ' + dayNum };
 
-      const missingSum = out.missing.value.reduce((a,b)=>a+b,0);
-      out.subconscious = {value: out.missing.value.length > 0 ? reduceToSingle(9 - out.missing.value.length) : 0, goc: out.missing.value.length > 0 ? '9 - ' + out.missing.value.length : '-'};
+      const missingSum = out.missing.value.reduce((a, b) => a + b, 0);
+      out.subconscious = { value: out.missing.value.length > 0 ? reduceToSingle(9 - out.missing.value.length) : 0, goc: out.missing.value.length > 0 ? '9 - ' + out.missing.value.length : '-' };
 
-      let day=0,month=0,year=0; if (birthDate){ day = birthDate.getDate(); month = birthDate.getMonth()+1; year = birthDate.getFullYear(); }
-      const dayRaw = day; const monthRaw = month; const yearRaw = String(year).split('').reduce((a,c)=>a+Number(c),0);
-      function clusterReduceValue(n){ if (n===11||n===22||n===33) return n; return reduceNumber(n,true); }
+      let day = 0, month = 0, year = 0; if (birthDate) { day = birthDate.getDate(); month = birthDate.getMonth() + 1; year = birthDate.getFullYear(); }
+      const dayRaw = day; const monthRaw = month; const yearRaw = String(year).split('').reduce((a, c) => a + Number(c), 0);
+      function clusterReduceValue(n) { if (n === 11 || n === 22 || n === 33) return n; return reduceNumber(n, true); }
       const dayReduced = clusterReduceValue(dayRaw); const monthReduced = clusterReduceValue(monthRaw); const yearReduced = clusterReduceValue(yearRaw);
 
       // display parts for gốc (preserve masters as their original 11/22/33 strings)
-      function displayCluster(n){ if (n===11||n===22||n===33) return String(n); return String(reduceNumber(n,true)); }
+      function displayCluster(n) { if (n === 11 || n === 22 || n === 33) return String(n); return String(reduceNumber(n, true)); }
       const displayDay = displayCluster(dayRaw);
       const displayMonth = displayCluster(monthRaw);
       const displayYear = displayCluster(yearRaw);
 
-      const lifeRawSum = (typeof dayReduced==='number'?dayReduced:reduceNumber(dayReduced,true)) + (typeof monthReduced==='number'?monthReduced:reduceNumber(monthReduced,true)) + (typeof yearReduced==='number'?yearReduced:reduceNumber(yearReduced,true));
-      const lifeReduced = reduceNumber(lifeRawSum,true);
-      out.life = {value: lifeReduced, goc: formatGoc(lifeRawSum, [dayReduced, monthReduced, yearReduced], lifeReduced)};
+      const lifeRawSum = (typeof dayReduced === 'number' ? dayReduced : reduceNumber(dayReduced, true)) + (typeof monthReduced === 'number' ? monthReduced : reduceNumber(monthReduced, true)) + (typeof yearReduced === 'number' ? yearReduced : reduceNumber(yearReduced, true));
+      const lifeReduced = reduceNumber(lifeRawSum, true);
+      out.life = { value: lifeReduced, goc: formatGoc(lifeRawSum, [dayReduced, monthReduced, yearReduced], lifeReduced) };
 
-      out.birthDay = {value: reduceNumber(dayRaw,true), goc: String(dayRaw)};
-      out.attitude = {value: reduceToSingle(reduceNumber(dayRaw,true) + reduceNumber(monthRaw,true)), goc: String(reduceNumber(dayRaw,true)) + ' + ' + String(reduceNumber(monthRaw,true)) };
-      out.generation = {value: reduceToSingle(reduceNumber(yearRaw,true)), goc: String(yearRaw)};
+      out.birthDay = { value: reduceNumber(dayRaw, true), goc: String(dayRaw) };
+      out.attitude = { value: reduceNumber(reduceNumber(dayRaw, true) + reduceNumber(monthRaw, true), true), goc: String(reduceNumber(dayRaw, true)) + ' + ' + String(reduceNumber(monthRaw, true)) };
+      out.generation = { value: reduceToSingle(reduceNumber(yearRaw, true)), goc: String(yearRaw) };
 
-      const now = new Date(); const curYearSum = String(now.getFullYear()).split('').reduce((a,c)=>a+Number(c),0);
-      const personalYearRaw = reduceNumber(dayRaw,true) + reduceNumber(monthRaw,true) + curYearSum;
-      out.personalYear = {value: reduceToSingle(reduceNumber(personalYearRaw,true)), goc: String(reduceNumber(dayRaw,true)) + ' + ' + String(reduceNumber(monthRaw,true)) + ' + ' + String(curYearSum)};
-      out.personalMonth = {value: reduceToSingle(out.personalYear.value + (now.getMonth()+1)), goc: out.personalYear.value + ' + ' + (now.getMonth()+1)};
-      out.personalDay = {value: reduceToSingle(out.personalMonth.value + now.getDate()), goc: out.personalMonth.value + ' + ' + now.getDate() };
+      const now = new Date(); const curYearSum = String(now.getFullYear()).split('').reduce((a, c) => a + Number(c), 0);
+      const personalYearRaw = reduceNumber(dayRaw, true) + reduceNumber(monthRaw, true) + curYearSum;
+      out.personalYear = { value: reduceToSingle(reduceNumber(personalYearRaw, true)), goc: String(reduceNumber(dayRaw, true)) + ' + ' + String(reduceNumber(monthRaw, true)) + ' + ' + String(curYearSum) };
+      out.personalMonth = { value: reduceToSingle(out.personalYear.value + (now.getMonth() + 1)), goc: out.personalYear.value + ' + ' + (now.getMonth() + 1) };
+      out.personalDay = { value: reduceToSingle(out.personalMonth.value + now.getDate()), goc: out.personalMonth.value + ' + ' + now.getDate() };
 
       // Stages: compute gốc as reduced clusters separately
-      const dayReducedVal = reduceNumber(dayRaw,true);
-      const monthReducedVal = reduceNumber(monthRaw,true);
-      const yearReducedVal = reduceNumber(yearRaw,true);
-      
+      const dayReducedVal = reduceNumber(dayRaw, true);
+      const monthReducedVal = reduceNumber(monthRaw, true);
+      const yearReducedVal = reduceNumber(yearRaw, true);
+
       const ch1GocRaw = dayReducedVal + monthReducedVal;
-      const ch1Index = reduceToSingle(reduceNumber(ch1GocRaw,true));
+      const ch1Index = reduceToSingle(reduceNumber(ch1GocRaw, true));
       const ch1GocArr = [dayReducedVal, monthReducedVal];
       const tt1 = Math.abs(dayReducedVal - monthReducedVal);
       const bd1 = 36 - out.life.value - 9; const kt1 = bd1 + 9;
 
       const ch2GocRaw = dayReducedVal + yearReducedVal;
-      const ch2Index = reduceToSingle(reduceNumber(ch2GocRaw,true));
+      const ch2Index = reduceToSingle(reduceNumber(ch2GocRaw, true));
       const ch2GocArr = [dayReducedVal, yearReducedVal];
       const tt2 = Math.abs(dayReducedVal - yearReducedVal);
       const bd2 = kt1; const kt2 = bd2 + 9;
 
       const ch3GocRaw = ch1Index + ch2Index;
-      const ch3Index = reduceToSingle(reduceNumber(ch3GocRaw,true));
+      const ch3Index = reduceToSingle(reduceNumber(ch3GocRaw, true));
       const ch3GocArr = [ch1Index, ch2Index];
-      const tt3 = Math.abs(tt1 - tt2); 
+      const tt3 = Math.abs(tt1 - tt2);
       const tt3GocArr = [tt1, tt2];
       const bd3 = kt2; const kt3 = bd3 + 9;
 
       const ch4GocRaw = monthReducedVal + yearReducedVal;
-      const ch4Index = reduceNumber(ch4GocRaw,true);
+      const ch4Index = reduceNumber(ch4GocRaw, true);
       const ch4GocArr = [monthReducedVal, yearReducedVal];
       const tt4 = Math.abs(monthReducedVal - yearReducedVal); const bd4 = kt3; const kt4 = bd4 + 9;
 
-      out.stage1 = {index: ch1Index, tt: reduceNumber(tt1,true), ttGoc: [dayReducedVal, monthReducedVal], age:[bd1,kt1], gocArr: ch1GocArr};
-      out.stage2 = {index: ch2Index, tt: reduceNumber(tt2,true), ttGoc: [dayReducedVal, yearReducedVal], age:[bd2,kt2], gocArr: ch2GocArr};
-      out.stage3 = {index: ch3Index, tt: reduceNumber(tt3,true), ttGoc: tt3GocArr, age:[bd3,kt3], gocArr: ch3GocArr};
-      out.stage4 = {index: ch4Index, tt: reduceNumber(tt4,true), ttGoc: [monthReducedVal, yearReducedVal], age:[bd4,kt4], gocArr: ch4GocArr};
+      out.stage1 = { index: ch1Index, tt: reduceNumber(tt1, true), ttGoc: [dayReducedVal, monthReducedVal], age: [bd1, kt1], gocArr: ch1GocArr };
+      out.stage2 = { index: ch2Index, tt: reduceNumber(tt2, true), ttGoc: [dayReducedVal, yearReducedVal], age: [bd2, kt2], gocArr: ch2GocArr };
+      out.stage3 = { index: ch3Index, tt: reduceNumber(tt3, true), ttGoc: tt3GocArr, age: [bd3, kt3], gocArr: ch3GocArr };
+      out.stage4 = { index: ch4Index, tt: reduceNumber(tt4, true), ttGoc: [monthReducedVal, yearReducedVal], age: [bd4, kt4], gocArr: ch4GocArr };
 
       const lifeReducedForLink = reduceToSingle(out.life.value); const missionReducedForLink = reduceToSingle(out.mission.value);
-      out.linkLifeMission = {value: Math.abs(Math.max(lifeReducedForLink,missionReducedForLink) - Math.min(lifeReducedForLink,missionReducedForLink)), goc: lifeReducedForLink + ' vs ' + missionReducedForLink };
+      out.linkLifeMission = { value: Math.abs(Math.max(lifeReducedForLink, missionReducedForLink) - Math.min(lifeReducedForLink, missionReducedForLink)), goc: lifeReducedForLink + ' vs ' + missionReducedForLink };
 
       const soulReducedForLink = reduceToSingle(out.soul.value); const persReducedForLink = reduceToSingle(out.personality.value);
-      out.linkSoulPersonality = {value: Math.abs(Math.max(soulReducedForLink,persReducedForLink) - Math.min(soulReducedForLink,persReducedForLink)), goc: soulReducedForLink + ' vs ' + persReducedForLink };
+      out.linkSoulPersonality = { value: Math.abs(Math.max(soulReducedForLink, persReducedForLink) - Math.min(soulReducedForLink, persReducedForLink)), goc: soulReducedForLink + ' vs ' + persReducedForLink };
 
       const maturityRawSum = Number(out.life.value) + Number(out.mission.value);
-      const maturityValue = reduceNumber(maturityRawSum,true);
-      out.maturity = {value: maturityValue, goc: formatGoc(maturityRawSum, [out.life.value, out.mission.value], maturityValue)};
+      const maturityValue = reduceNumber(maturityRawSum, true);
+      out.maturity = { value: maturityValue, goc: formatGoc(maturityRawSum, [out.life.value, out.mission.value], maturityValue) };
 
       // Lessons: check only in intermediate values from life, mission, soul, maturity, birthDay, stages
-      const lessonsMap = {13:4,14:5,15:6,16:7,17:8};
+      const lessonsMap = { 13: 4, 14: 5, 15: 6, 16: 7, 17: 8 };
       const intermediatesForLessons = [
-        lifeRawSum, missionRawSum, soulRawSum, 
+        lifeRawSum, missionRawSum, soulRawSum,
         out.life.value + out.mission.value,
         dayRaw, monthRaw, yearRaw,
         ch1GocRaw, ch2GocRaw, ch3GocRaw, ch4GocRaw
       ];
-      const lessonsFound = intermediatesForLessons.filter(n=>[13,14,15,16,17].includes(n));
+      const lessonsFound = intermediatesForLessons.filter(n => [13, 14, 15, 16, 17].includes(n));
       // dedupe
       const uniqueLessons = Array.from(new Set(lessonsFound));
-      const lessons = uniqueLessons.length > 0 ? uniqueLessons.map(n=>({found:n,lesson:lessonsMap[n]})) : null;
-      out.lessons = {value: lessons, goc: uniqueLessons.length > 0 ? uniqueLessons.join(' + ') : '-'};
+      const lessons = uniqueLessons.length > 0 ? uniqueLessons.map(n => ({ found: n, lesson: lessonsMap[n] })) : null;
+      out.lessons = { value: lessons, goc: uniqueLessons.length > 0 ? uniqueLessons.join(' + ') : '-' };
 
       return out;
     }
@@ -232,21 +245,21 @@
       return sum >= 10 ? String(sum) : reduced.join(',');
     }
 
-    function renderResults(nameData, results){
+    function renderResults(nameData, results) {
       const resultsDiv = document.getElementById('results');
       resultsDiv.innerHTML = '';
       const container = document.createElement('div');
       container.className = 'w-full grid grid-cols-3 gap-3 md:gap-6 max-w-5xl mx-auto';
       resultsDiv.appendChild(container);
-      function box(title, item){
-        const el = document.createElement('div'); el.className='bg-white p-2 md:p-4 rounded shadow-md text-center flex flex-col h-full';
+      function box(title, item) {
+        const el = document.createElement('div'); el.className = 'bg-white p-2 md:p-4 rounded shadow-md text-center flex flex-col h-full';
         let val;
-        if (item.value===null||item.value===undefined) val = '-';
-        else if (Array.isArray(item.value)){
-          if (item.value.length===0) val = '-';
-          else if (typeof item.value[0] === 'object'){
+        if (item.value === null || item.value === undefined) val = '-';
+        else if (Array.isArray(item.value)) {
+          if (item.value.length === 0) val = '-';
+          else if (typeof item.value[0] === 'object') {
             // format lesson objects like 13/4
-            val = item.value.map(o=> (o.found && o.lesson)? (o.found + '/' + o.lesson) : JSON.stringify(o)).join(', ');
+            val = item.value.map(o => (o.found && o.lesson) ? (o.found + '/' + o.lesson) : JSON.stringify(o)).join(', ');
           } else if (item.value[0] === null || (Array.isArray(item.value) && item.value.length === 0)) {
             val = '-';
           } else if (title === 'Chỉ số Thiếu') {
@@ -280,19 +293,19 @@
       }
 
       const order = [
-        ['Đường đời','life'],['Sứ mệnh','mission'],['Linh hồn','soul'],
-        ['Liên kết Đường đời - Sứ mệnh','linkLifeMission'],['Trưởng thành','maturity'],['Ngày sinh','birthDay'],
-        ['Sức mạnh tiềm thức','subconscious'],['Nhân cách','personality'],['Liên kết Linh hồn - Nhân cách','linkSoulPersonality'],
-        ['Đam mê','passion'],['Chỉ số Thiếu','missing'],['Cân bằng','balance'],
-        ['Tư duy lý trí','thinking'],['Thái độ','attitude'],['Thế hệ','generation'],
-        ['Năm cá nhân','personalYear'],['Tháng cá nhân','personalMonth'],['Ngày cá nhân','personalDay'],
-        ['Bài học','lessons'],['Chặng 1','stage1'],['Chặng 2','stage2'],['Chặng 3','stage3'],['Chặng 4','stage4']
+        ['Đường đời', 'life'], ['Sứ mệnh', 'mission'], ['Linh hồn', 'soul'],
+        ['Liên kết Đường đời - Sứ mệnh', 'linkLifeMission'], ['Trưởng thành', 'maturity'], ['Ngày sinh', 'birthDay'],
+        ['Sức mạnh tiềm thức', 'subconscious'], ['Nhân cách', 'personality'], ['Liên kết Linh hồn - Nhân cách', 'linkSoulPersonality'],
+        ['Đam mê', 'passion'], ['Chỉ số Thiếu', 'missing'], ['Cân bằng', 'balance'],
+        ['Tư duy lý trí', 'thinking'], ['Thái độ', 'attitude'], ['Thế hệ', 'generation'],
+        ['Năm cá nhân', 'personalYear'], ['Tháng cá nhân', 'personalMonth'], ['Ngày cá nhân', 'personalDay'],
+        ['Bài học', 'lessons'], ['Chặng 1', 'stage1'], ['Chặng 2', 'stage2'], ['Chặng 3', 'stage3'], ['Chặng 4', 'stage4']
       ];
 
       // filter out stages from regular grid
-      const nonStageOrder = order.filter(x=>!x[1].startsWith('stage'));
-      nonStageOrder.forEach(([label,key])=>{
-        const box_el = box(label,results[key]);
+      const nonStageOrder = order.filter(x => !x[1].startsWith('stage'));
+      nonStageOrder.forEach(([label, key]) => {
+        const box_el = box(label, results[key]);
         if (label === 'Bài học') {
           const wrapper = document.createElement('div');
           wrapper.style.gridColumn = '2 / 3';
@@ -302,50 +315,50 @@
           container.appendChild(box_el);
         }
       });
-      
+
       // render stages as table
-      if (results.stage1){
+      if (results.stage1) {
         const stageContainer = document.createElement('div');
         stageContainer.className = 'w-full mt-6 flex justify-center';
         const stageTable = document.createElement('div');
         stageTable.className = 'overflow-x-auto w-full px-4';
         const table = document.createElement('table');
         table.className = 'border-collapse border-2 border-gray-300 text-base mx-auto';
-        
+
         // header row
         let thead = '<thead><tr><th class="border-2 border-gray-300 px-1 md:px-3 py-2 bg-gray-700 text-white font-semibold text-xs md:text-base"></th>'
         for (let i = 0; i < 4; i++) {
-          const item = results['stage' + (i+1)];
-          thead += `<th class="border-2 border-gray-300 px-1 md:px-3 py-2 bg-gray-700 text-white text-center font-semibold text-xs md:text-base">Chặng ${i+1}</th>`;
+          const item = results['stage' + (i + 1)];
+          thead += `<th class="border-2 border-gray-300 px-1 md:px-3 py-2 bg-gray-700 text-white text-center font-semibold text-xs md:text-base">Chặng ${i + 1}</th>`;
         }
         thead += '</tr></thead>';
-        
+
         // chặng row
         let tbody = '<tbody><tr><td class="border-2 border-gray-300 px-1 md:px-3 py-2 font-semibold bg-gray-100 text-gray-700 text-xs md:text-base">Chặng</td>';
         for (let i = 0; i < 4; i++) {
-          const item = results['stage' + (i+1)];
+          const item = results['stage' + (i + 1)];
           const gocStr = item.gocArr.join(',');
           tbody += `<td class="border-2 border-gray-300 px-1 md:px-3 py-2 text-center"><div class="font-bold text-red-500 text-lg md:text-2xl">${item.index}</div><div class="text-xs md:text-sm text-gray-500 mt-0.5">(${gocStr})</div></td>`;
         }
         tbody += '</tr>';
-        
+
         // thách thức row
         tbody += '<tr><td class="border-2 border-gray-300 px-1 md:px-3 py-2 font-semibold bg-gray-100 text-gray-700 text-xs md:text-base">Thách thức</td>';
         for (let i = 0; i < 4; i++) {
-          const item = results['stage' + (i+1)];
+          const item = results['stage' + (i + 1)];
           const gocStr = item.ttGoc.join(',');
           tbody += `<td class="border-2 border-gray-300 px-1 md:px-3 py-2 text-center"><div class="font-bold text-red-500 text-lg md:text-2xl">${item.tt}</div><div class="text-xs md:text-sm text-gray-500 mt-0.5">(${gocStr})</div></td>`;
         }
         tbody += '</tr>';
-        
+
         // tuổi row
         tbody += '<tr><td class="border-2 border-gray-300 px-1 md:px-3 py-2 font-semibold bg-gray-100 text-gray-700 text-xs md:text-base">Tuổi</td>';
         for (let i = 0; i < 4; i++) {
-          const item = results['stage' + (i+1)];
+          const item = results['stage' + (i + 1)];
           tbody += `<td class="border-2 border-gray-300 px-1 md:px-3 py-2 text-center font-semibold text-xs md:text-base text-gray-700">${item.age[0]}-${item.age[1]}</td>`;
         }
         tbody += '</tr></tbody>';
-        
+
         table.innerHTML = thead + tbody;
         stageTable.appendChild(table);
         stageContainer.appendChild(stageTable);
@@ -353,16 +366,17 @@
       }
     }
 
-    document.getElementById('calc').addEventListener('click',()=>{
+    document.getElementById('calc').addEventListener('click', () => {
       const fullname = document.getElementById('fullname').value.trim(); const birthStr = document.getElementById('birth').value;
-      if (!fullname || !birthStr){ alert('Vui lòng nhập tên và ngày sinh'); return; }
+      if (!fullname || !birthStr) { alert('Vui lòng nhập tên và ngày sinh'); return; }
       const birthDate = new Date(birthStr + 'T00:00:00');
       const nameData = analyzeName(fullname);
-      const results = computeAll(nameData,birthDate);
-      renderResults(nameData,results);
+      const results = computeAll(nameData, birthDate);
+      renderResults(nameData, results);
     });
 
-    document.getElementById('reset').addEventListener('click',()=>{ document.getElementById('fullname').value=''; document.getElementById('birth').value=''; document.getElementById('results').innerHTML=''; });
-    </script>
-  </body>
+    document.getElementById('reset').addEventListener('click', () => { document.getElementById('fullname').value = ''; document.getElementById('birth').value = ''; document.getElementById('results').innerHTML = ''; });
+  </script>
+</body>
+
 </html>
