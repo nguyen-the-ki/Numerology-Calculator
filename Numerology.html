@@ -168,7 +168,7 @@
 
       out.birthDay = { value: reduceNumber(dayRaw, true), goc: String(dayRaw) };
       out.attitude = { value: reduceNumber(reduceNumber(dayRaw, true) + reduceNumber(monthRaw, true), true), goc: String(reduceNumber(dayRaw, true)) + ' + ' + String(reduceNumber(monthRaw, true)) };
-      out.generation = { value: reduceToSingle(reduceNumber(yearRaw, true)), goc: String(yearRaw) };
+      out.generation = { value: reduceNumber(yearRaw, true), goc: String(yearRaw) };
 
       const now = new Date(); const curYearSum = String(now.getFullYear()).split('').reduce((a, c) => a + Number(c), 0);
       const personalYearRaw = reduceNumber(dayRaw, true) + reduceNumber(monthRaw, true) + curYearSum;
@@ -201,7 +201,8 @@
       const bd3 = kt2; const kt3 = bd3 + 9;
 
       const ch4GocRaw = monthReducedVal + yearReducedVal;
-      const ch4Index = reduceNumber(ch4GocRaw, true);
+      let ch4Val = ch4GocRaw; while (ch4Val >= 10 && ch4Val !== 11) { ch4Val = sumDigits(ch4Val); }
+      const ch4Index = ch4Val;
       const ch4GocArr = [monthReducedVal, yearReducedVal];
       const tt4 = Math.abs(monthReducedVal - yearReducedVal); const bd4 = kt3; const kt4 = bd4 + 9;
 
