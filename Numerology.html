@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mật mã thành công</title>
+  <title>Numer Calculator</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="min-h-screen bg-gray-50 p-4"
   style="font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';">
   <div class="max-w-5xl mx-auto">
-    <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">Mật mã thành công</h1>
+    <h1 class="text-3xl font-bold mb-8 text-center text-gray-800">Numer Calculator</h1>
 
     <form id="form" class="bg-white p-6 rounded shadow-md max-w-md mx-auto">
       <div class="flex flex-col gap-4">
@@ -24,7 +24,7 @@
             </svg>
             Họ và tên
           </div>
-          <input id="fullname" type="text" placeholder="Nguyễn Lê Quốc Anh"
+          <input id="fullname" type="text" placeholder="Họ và tên"
             class="mt-2 w-full border-2 border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-gray-400"
             style="height: 44px; -webkit-appearance: none; appearance: none;" />
         </label>
@@ -46,8 +46,6 @@
       </div>
 
       <div class="mt-6 flex gap-3 justify-center">
-        <button id="calc" type="button"
-          class="px-6 py-2 bg-gray-700 text-white font-medium rounded hover:bg-gray-800 transition">Tính</button>
         <button id="reset" type="button"
           class="px-6 py-2 border-2 border-gray-400 text-gray-700 font-medium rounded hover:bg-gray-100 transition">Xóa</button>
       </div>
@@ -167,19 +165,35 @@
       out.life = { value: lifeReduced, goc: formatGoc(lifeRawSum, [dayReduced, monthReduced, yearReduced], lifeReduced) };
 
       out.birthDay = { value: reduceNumber(dayRaw, true), goc: String(dayRaw) };
-      out.attitude = { value: reduceNumber(reduceNumber(dayRaw, true) + reduceNumber(monthRaw, true), true), goc: String(reduceNumber(dayRaw, true)) + ' + ' + String(reduceNumber(monthRaw, true)) };
+      const attitudeRawSum = reduceNumber(dayRaw, true) + reduceNumber(monthRaw, true);
+      out.attitude = { value: reduceNumber(attitudeRawSum, true), goc: String(reduceNumber(dayRaw, true)) + ' + ' + String(reduceNumber(monthRaw, true)) };
       out.generation = { value: reduceNumber(yearRaw, true), goc: String(yearRaw) };
 
-      const now = new Date(); const curYearSum = String(now.getFullYear()).split('').reduce((a, c) => a + Number(c), 0);
-      const personalYearRaw = reduceNumber(dayRaw, true) + reduceNumber(monthRaw, true) + curYearSum;
-      out.personalYear = { value: reduceToSingle(reduceNumber(personalYearRaw, true)), goc: String(reduceNumber(dayRaw, true)) + ' + ' + String(reduceNumber(monthRaw, true)) + ' + ' + String(curYearSum) };
-      out.personalMonth = { value: reduceToSingle(out.personalYear.value + (now.getMonth() + 1)), goc: out.personalYear.value + ' + ' + (now.getMonth() + 1) };
-      out.personalDay = { value: reduceToSingle(out.personalMonth.value + now.getDate()), goc: out.personalMonth.value + ' + ' + now.getDate() };
+      const now = new Date(); const currentMonth = now.getMonth() + 1;
+      function getPersonalCycle(year) {
+        const yearSum = String(year).split('').reduce((a, c) => a + Number(c), 0);
+        const personalYearRaw = reduceNumber(dayRaw, true) + reduceNumber(monthRaw, true) + yearSum;
+        const personalYear = reduceToSingle(reduceNumber(personalYearRaw, true));
+        const personalMonth = reduceToSingle(personalYear + currentMonth);
+        const personalDay = reduceToSingle(personalMonth + now.getDate());
+        return { personalYear, personalMonth, personalDay, yearSum };
+      }
+      const currentCycle = getPersonalCycle(now.getFullYear());
+      if (currentMonth >= 10) {
+        const nextCycle = getPersonalCycle(now.getFullYear() + 1);
+        out.personalYear = { value: `${currentCycle.personalYear}/${nextCycle.personalYear}`, goc: `${currentCycle.yearSum}/${nextCycle.yearSum}` };
+        out.personalMonth = { value: `${currentCycle.personalMonth}/${nextCycle.personalMonth}`, goc: `${currentCycle.personalYear} + ${currentMonth}/${nextCycle.personalYear} + ${currentMonth}` };
+        out.personalDay = { value: `${currentCycle.personalDay}/${nextCycle.personalDay}`, goc: `${currentCycle.personalMonth} + ${now.getDate()}/${nextCycle.personalMonth} + ${now.getDate()}` };
+      } else {
+        out.personalYear = { value: currentCycle.personalYear, goc: String(currentCycle.yearSum) };
+        out.personalMonth = { value: currentCycle.personalMonth, goc: currentCycle.personalYear + ' + ' + currentMonth };
+        out.personalDay = { value: currentCycle.personalDay, goc: currentCycle.personalMonth + ' + ' + now.getDate() };
+      }
 
       // Stages: compute gốc as reduced clusters separately
-      const dayReducedVal = reduceNumber(dayRaw, true);
-      const monthReducedVal = reduceNumber(monthRaw, true);
-      const yearReducedVal = reduceNumber(yearRaw, true);
+      const dayReducedVal = reduceToSingle(dayRaw);
+      const monthReducedVal = reduceToSingle(monthRaw);
+      const yearReducedVal = reduceToSingle(yearRaw);
 
       const ch1GocRaw = dayReducedVal + monthReducedVal;
       const ch1Index = reduceToSingle(reduceNumber(ch1GocRaw, true));
@@ -221,15 +235,18 @@
       const maturityValue = reduceNumber(maturityRawSum, true);
       out.maturity = { value: maturityValue, goc: formatGoc(maturityRawSum, [out.life.value, out.mission.value], maturityValue) };
 
-      // Lessons: check only in intermediate values from life, mission, soul, maturity, birthDay, stages
-      const lessonsMap = { 13: 4, 14: 5, 15: 6, 16: 7, 17: 8 };
+      // Lessons: stage candidates use their sums, with 19/1 allowed only for stages.
+      const lessonsMap = { 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 19: 1 };
+      const stageLessonCandidates = [ch1GocRaw, ch2GocRaw, ch3GocRaw, ch4GocRaw];
       const intermediatesForLessons = [
-        lifeRawSum, missionRawSum, soulRawSum,
+        lifeRawSum, missionRawSum, soulRawSum, personalityRawSum, attitudeRawSum,
         out.life.value + out.mission.value,
-        dayRaw, monthRaw, yearRaw,
-        ch1GocRaw, ch2GocRaw, ch3GocRaw, ch4GocRaw
+        dayRaw, monthRaw, yearRaw
       ];
-      const lessonsFound = intermediatesForLessons.filter(n => [13, 14, 15, 16, 17].includes(n));
+      const lessonsFound = [
+        ...intermediatesForLessons.filter(n => [13, 14, 15, 16, 17].includes(n)),
+        ...stageLessonCandidates.filter(n => [13, 14, 15, 16, 17, 19].includes(n))
+      ];
       // dedupe
       const uniqueLessons = Array.from(new Set(lessonsFound));
       const lessons = uniqueLessons.length > 0 ? uniqueLessons.map(n => ({ found: n, lesson: lessonsMap[n] })) : null;
@@ -289,7 +306,7 @@
         } else if (title === 'Liên kết Linh hồn - Nhân cách') {
           displayTitle = 'Liên kết LH - NC';
         }
-        el.innerHTML = `<div class="flex-1 flex items-center justify-center text-xs md:text-sm text-gray-700 font-medium line-clamp-3">${displayTitle}</div><div class="text-2xl md:text-5xl font-bold text-red-500 py-1 md:py-2">${val}</div><div class="h-5 md:h-6 text-xs md:text-sm text-gray-500 flex items-center justify-center">${goc}</div>`;
+        el.innerHTML = `<div class="flex-1 flex items-center justify-center text-xs md:text-sm text-gray-700 font-medium line-clamp-3">${displayTitle}</div><div class="relative w-full flex items-center justify-center py-1"><span class="relative text-2xl md:text-5xl font-bold text-red-500">${val}<span class="absolute left-full bottom-0 ml-1 whitespace-nowrap text-xs md:text-sm text-gray-500">${goc}</span></span></div>`;
         return el;
       }
 
@@ -325,6 +342,7 @@
         stageTable.className = 'overflow-x-auto w-full px-4';
         const table = document.createElement('table');
         table.className = 'border-collapse border-2 border-gray-300 text-base mx-auto';
+        table.style.zoom = '1.3';
 
         // header row
         let thead = '<thead><tr><th class="border-2 border-gray-300 px-1 md:px-3 py-2 bg-gray-700 text-white font-semibold text-xs md:text-base"></th>'
@@ -367,16 +385,21 @@
       }
     }
 
-    document.getElementById('calc').addEventListener('click', () => {
+    function updateResults() {
       const fullname = document.getElementById('fullname').value.trim(); const birthStr = document.getElementById('birth').value;
-      if (!fullname || !birthStr) { alert('Vui lòng nhập tên và ngày sinh'); return; }
+      if (!fullname || !birthStr) { document.getElementById('results').innerHTML = ''; return; }
       const birthDate = new Date(birthStr + 'T00:00:00');
+      if (Number.isNaN(birthDate.getTime())) { document.getElementById('results').innerHTML = ''; return; }
       const nameData = analyzeName(fullname);
+      if (!nameData) { document.getElementById('results').innerHTML = ''; return; }
       const results = computeAll(nameData, birthDate);
       renderResults(nameData, results);
-    });
+    }
 
-    document.getElementById('reset').addEventListener('click', () => { document.getElementById('fullname').value = ''; document.getElementById('birth').value = ''; document.getElementById('results').innerHTML = ''; });
+    document.getElementById('fullname').addEventListener('input', updateResults);
+    document.getElementById('birth').addEventListener('input', updateResults);
+
+    document.getElementById('reset').addEventListener('click', () => { document.getElementById('fullname').value = ''; document.getElementById('birth').value = ''; updateResults(); });
   </script>
 </body>
 
