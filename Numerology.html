@@ -233,7 +233,11 @@
 
       // Lessons: stage candidates use their sums, with 19/1 allowed only for stages.
       const lessonsMap = { 13: 4, 14: 5, 15: 6, 16: 7, 17: 8, 19: 1 };
-      const stageLessonCandidates = [ch1GocRaw, ch2GocRaw, ch3GocRaw, ch4GocRaw];
+      const stagePairs = [ch1GocArr, ch2GocArr, ch3GocArr, ch4GocArr];
+      const stageLessonCandidates = [
+        ch1GocRaw, ch2GocRaw, ch3GocRaw, ch4GocRaw,
+        ...stagePairs.map(pair => Number(pair.slice().sort((a, b) => a - b).join('')))
+      ];
       const intermediatesForLessons = [
         lifeRawSum, missionRawSum, soulRawSum, personalityRawSum, attitudeRawSum,
         out.life.value + out.mission.value,
@@ -286,7 +290,7 @@
         } else {
           val = item.value;
         }
-        const noGocLabels = ['Liên kết Đường đời - Sứ mệnh', 'Sức mạnh tiềm thức', 'Nhân cách', 'Liên kết Linh hồn - Nhân cách', 'Đam mê', 'Chỉ số Thiếu', 'Cân bằng', 'Tư duy lý trí', 'Thái độ', 'Thế hệ', 'Năm cá nhân', 'Tháng cá nhân', 'Ngày cá nhân', 'Bài học'];
+        const noGocLabels = ['Liên kết Đường đời - Sứ mệnh', 'Sức mạnh tiềm thức', 'Liên kết Linh hồn - Nhân cách', 'Đam mê', 'Chỉ số Thiếu', 'Cân bằng', 'Tư duy lý trí', 'Thái độ', 'Thế hệ', 'Năm cá nhân', 'Tháng cá nhân', 'Ngày cá nhân', 'Bài học'];
         let goc = '';
         if (!noGocLabels.includes(title) && item.goc !== undefined) {
           // Special case: nếu là ngày sinh và gốc trùng với chỉ số chính thì không hiển thị
